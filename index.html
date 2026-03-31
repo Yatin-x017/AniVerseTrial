@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AniVerse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="#" class="logo">
+        <span class="logo-text">Ani<span class="logo-accent">Verse</span></span>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <a href="#" class="nav-item active" data-section="hero">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="#top-rated" class="nav-item" data-section="top-rated">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+          <path d="M4 22h16"/>
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+        </svg>
+        <span>Top</span>
+      </a>
+      <a href="#airing" class="nav-item" data-section="airing">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+        </svg>
+        <span>Airing</span>
+      </a>
+      <a href="#" class="nav-item" id="nav-watchlist-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span>Watchlist</span>
+        <span class="nav-badge" id="wl-badge" style="display:none">0</span>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-icon-btn" id="search-toggle" aria-label="Search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+      <div class="nav-avatar">YY</div>
+    </div>
+
+    <!-- Search dropdown -->
+    <div class="search-dropdown" id="search-dropdown">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search-input" placeholder="Search titles, genres, studios…" autocomplete="off" />
+      <button class="search-clear" id="search-clear" aria-label="Clear">✕</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+
+    <!-- Background image (full-bleed, blurred) -->
+    <div class="hero-bg">
+      <img id="hero-bg-img" src="" alt="" class="hero-bg-img" />
+      <div class="hero-bg-overlay"></div>
+    </div>
+
+    <!-- Left text panel -->
+    <div class="hero-text" id="hero-text">
+      <div class="hero-meta">
+        <span class="hero-tag">✦ Featured</span>
+        <span class="hero-rank" id="hero-rank">#1 in Top Rated</span>
+      </div>
+      <h1 class="hero-title">
+        <span id="hero-title-main"></span><br>
+        <em class="hero-accent" id="hero-title-accent"></em>
+      </h1>
+      <div class="hero-info">
+        <span class="hero-score" id="hero-score">★ —</span>
+        <span class="sep-dot"></span>
+        <span id="hero-year">—</span>
+        <span class="sep-dot"></span>
+        <span id="hero-eps">— Episodes</span>
+        <span class="rating-pill" id="hero-type">TV</span>
+      </div>
+      <p class="hero-synopsis" id="hero-synopsis">Loading…</p>
+      <div class="hero-actions">
+        <a class="btn-primary" id="hero-mal-btn" href="#" target="_blank" rel="noopener">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          View on MAL
+        </a>
+        <button class="btn-ghost" id="hero-wl-btn" data-id="">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span id="hero-wl-label">Add to Watchlist</span>
+        </button>
+        <button class="btn-icon hero-info-btn" id="hero-info-btn" aria-label="More info">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </button>
+      </div>
+      <div class="hero-tags" id="hero-tags"></div>
+    </div>
+
+    <!-- Right: poster image -->
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <!-- Two layers for crossfade -->
+        <img id="hero-img-a" src="" alt="" class="hero-poster hero-poster-a" />
+        <img id="hero-img-b" src="" alt="" class="hero-poster hero-poster-b" />
+        <div class="hero-img-glow" id="hero-glow"></div>
+      </div>
+      <div class="hero-gradient"></div>
+    </div>
+
+    <!-- Prev / Next arrows -->
+    <button class="hero-nav hero-prev" id="hero-prev" aria-label="Previous">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="hero-nav hero-next" id="hero-next" aria-label="Next">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 6 15 12 9 18"/>
+      </svg>
+    </button>
+
+    <!-- Progress dots -->
+    <div class="hero-dots" id="hero-dots"></div>
+
+    <!-- Progress bar -->
+    <div class="hero-progress-bar"><div class="hero-progress-fill" id="hero-progress-fill"></div></div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    </div>
+  </section>
+
+  <!-- FILTER STRIP -->
+  <div class="filter-strip">
+    <div class="filter-search-wrap">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="filter-search" placeholder="Search titles…" autocomplete="off" />
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-group">
+      <span class="filter-label">Genre</span>
+      <select class="filter-select" id="filter-genre">
+        <option value="all">All</option>
+        <option value="1">Action</option>
+        <option value="2">Adventure</option>
+        <option value="4">Comedy</option>
+        <option value="8">Drama</option>
+        <option value="10">Fantasy</option>
+        <option value="14">Horror</option>
+        <option value="22">Romance</option>
+        <option value="24">Sci-Fi</option>
+        <option value="36">Slice of Life</option>
+        <option value="37">Supernatural</option>
+        <option value="41">Thriller</option>
+      </select>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-group">
+      <span class="filter-label">Status</span>
+      <select class="filter-select" id="filter-status">
+        <option value="all">All</option>
+        <option value="airing">Airing</option>
+        <option value="complete">Finished</option>
+        <option value="upcoming">Upcoming</option>
+      </select>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-group">
+      <span class="filter-label">Sort by</span>
+      <select class="filter-select" id="filter-sort">
+        <option value="score">Score</option>
+        <option value="rank">Rank</option>
+        <option value="popularity">Popularity</option>
+        <option value="members">Members</option>
+      </select>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-group score-group">
+      <span class="filter-label">Min Score</span>
+      <span class="score-val" id="score-display">Any</span>
+      <input type="range" class="filter-range" id="filter-score" min="0" max="9" step="0.5" value="0" />
+    </div>
+
+    <button class="filter-btn" id="filter-btn">Apply</button>
+    <button class="filter-reset" id="filter-reset" title="Reset filters">↺</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div id="default-view">
+
+      <!-- TOP RATED -->
+      <section class="row-section" id="top-rated">
+        <div class="row-header">
+          <div class="row-header-left">
+            <span class="row-dot"></span>
+            <h2 class="row-title">Top Rated All Time</h2>
+          </div>
+          <button class="row-arrow" data-row="top-rated" data-expanded="false" aria-label="See all">
+            <span class="row-arrow-label">See all</span>
+            <svg class="row-arrow-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+        <div class="card-row" id="top-rated-row"></div>
+        <div class="card-grid card-grid-expand" id="top-rated-grid" style="display:none"></div>
+        <div class="load-more-wrap" id="top-rated-more" style="display:none">
+          <button class="load-more-btn" data-row="top-rated" data-page="2">Load more</button>
+        </div>
+      </section>
+
+      <!-- AIRING -->
+      <section class="row-section" id="airing">
+        <div class="row-header">
+          <div class="row-header-left">
+            <span class="row-dot row-dot-green"></span>
+            <h2 class="row-title">Currently Airing</h2>
+          </div>
+          <button class="row-arrow" data-row="airing" data-expanded="false" aria-label="See all">
+            <span class="row-arrow-label">See all</span>
+            <svg class="row-arrow-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+        <div class="card-row" id="airing-row"></div>
+        <div class="card-grid card-grid-expand" id="airing-grid" style="display:none"></div>
+        <div class="load-more-wrap" id="airing-more" style="display:none">
+          <button class="load-more-btn" data-row="airing" data-page="2">Load more</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RESULTS -->
+    <section class="row-section" id="results-section" style="display:none">
+      <div class="row-header">
+        <div class="row-header-left">
+          <span class="row-dot"></span>
+          <h2 class="row-title" id="results-title">Results</h2>
+        </div>
+        <button class="btn-ghost small" id="clear-results-btn">✕ Clear</button>
+      </div>
+      <div class="card-grid" id="results-grid"></div>
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-face">( ◞‸◟)</div>
+        <p>No anime found. Try different filters.</p>
+        <button class="btn-ghost" id="empty-reset-btn">Clear filters</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- WATCHLIST PANEL -->
+  <div class="wl-overlay" id="wl-overlay"></div>
+  <aside class="wl-panel" id="wl-panel">
+    <div class="wl-header">
+      <h2 class="wl-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        Watchlist
+        <span class="wl-count" id="wl-count">0</span>
+      </h2>
+      <button class="wl-close" id="wl-close">✕</button>
+    </div>
+    <div class="wl-list" id="wl-list">
+      <div class="wl-empty">
+        <div class="empty-face">( ˘･з･)</div>
+        <p>Nothing here yet.<br>Add anime you want to watch!</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- DETAIL MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="modal-inner">
+        <div class="modal-left">
+          <div class="modal-poster-wrap">
+            <img src="" alt="" class="modal-poster" id="modal-poster" />
+          </div>
+          <div class="modal-score-box" id="modal-score-box">—</div>
+          <button class="modal-wl-btn" id="modal-wl-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span id="modal-wl-label">Add to Watchlist</span>
+          </button>
+        </div>
+        <div class="modal-right">
+          <div class="modal-top-row">
+            <span class="status-badge" id="modal-status"></span>
+            <span class="modal-meta" id="modal-meta"></span>
+          </div>
+          <h2 class="modal-title" id="modal-title"></h2>
+          <p class="modal-title-en" id="modal-title-en"></p>
+          <div class="modal-genres" id="modal-genres"></div>
+          <p class="modal-synopsis-text" id="modal-synopsis"></p>
+          <div class="modal-stats">
+            <div class="modal-stat"><span class="stat-label">Score</span><span class="stat-val gold" id="ms-score">—</span></div>
+            <div class="modal-stat"><span class="stat-label">Rank</span><span class="stat-val" id="ms-rank">—</span></div>
+            <div class="modal-stat"><span class="stat-label">Episodes</span><span class="stat-val" id="ms-eps">—</span></div>
+            <div class="modal-stat"><span class="stat-label">Year</span><span class="stat-val" id="ms-year">—</span></div>
+          </div>
+          <div class="modal-actions">
+            <a href="#" class="btn-mal" id="modal-mal" target="_blank" rel="noopener">
+              View on MyAnimeList
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-logo">Ani<span class="logo-accent">Verse</span></span>
+    <p class="footer-text">Powered by <a href="https://jikan.moe" target="_blank">Jikan API</a> · Data from MyAnimeList</p>
+    <p class="footer-text">Vanilla JS · HTML · CSS</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
